@@ -22,6 +22,9 @@ class UpdateTODO(generics.UpdateAPIView):
     serializer_class = serializers.TODOSerializer
     queryset = models.TODO.objects.all()
 
+    def put(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
 
 class DeleteTODO(generics.DestroyAPIView):
     renderer_classes = [JSONRenderer]
